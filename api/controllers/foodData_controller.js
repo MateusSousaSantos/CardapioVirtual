@@ -26,18 +26,18 @@ module.exports = (app) => {
     const { foodId } = req.params;
 
     const foundFoodIndex = foodDataMock.data.findIndex(
-      (player) => player.id == foodId
+      (food) => food.id == foodId
     );
     if (foundFoodIndex == -1) {
       res.status(404).json({
-        message: "Player not found",
+        message: "Food not found",
         succes: false,
         playerData: foodDataMock,
       });
     } else {
       foodDataMock.data.splice(foundFoodIndex, 1);
       res.status(200).json({
-        message: "Player deleted from database",
+        message: "Food deleted from cardapio",
         succes: true,
         playerData: foodDataMock,
       });
@@ -47,31 +47,30 @@ module.exports = (app) => {
   };
 
   controllerFood.UpdateFoodData = (req, res) => {
-    const { playerId } = req.params;
+    const { foodId } = req.params;
 
-    console.log("teste0", playerId);
-    const findPlayerIndex = foodDataMock.data.findIndex(
-      (player) => player.id == playerId
+    const findFoodIndex = foodDataMock.data.findIndex(
+      (food) => food.id == foodId
     );
-    console.log("teste1", findPlayerIndex);
-    if (findPlayerIndex == -1) {
+
+    if (findFoodIndex == -1) {
       res.status(404).json({
-        message: "Player not found",
+        message: "Food not found",
         succes: false,
         playerData: foodDataMock,
       });
     } else {
-      const updatedPlayer = {
+      const updatedFood = {
         name: req.body.name,
         email: req.body.email,
         favoriteAgent: req.body.favoriteAgent,
         favoriteRole: req.body.favoriteRole,
       };
 
-      foodDataMock.data.splice(findPlayerIndex, 1, updatedPlayer);
+      foodDataMock.data.splice(findFoodIndex, 1, updatedFood);
 
       res.status(200).json({
-        message: "Player Updated on database",
+        message: "Food Updated on cardapio",
         succes: true,
         playerData: foodDataMock,
       });
