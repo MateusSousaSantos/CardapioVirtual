@@ -28,7 +28,7 @@ tambem possui funcionalidades para calcular o imc do usuario
 | `diaSemana`      | `string` | **Obrigatório**. O dia da semana em que ela estara disponivel|
 
 
-#### Deletar um Player da DataBase
+#### Deletar uma Comida do Cardapio
 
 ```http
   GET cardapio/v1/foodData/:comidaId
